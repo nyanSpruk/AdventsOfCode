@@ -1,15 +1,21 @@
-def improved(file):
-    elfs = []
+def improved(file) -> list([int]):
+    elf_cal = []
     lines = file.read()
     elfs = lines.split("\n\n")
 
     for elf in elfs:
         elf_split = elf.split("\n")
-        sum_cal = sum(int(x) for x in elf_split if str(x).isdigit())
-        print(sum_cal)
-        elfs.append(sum_cal)
-    elfs_sorted = sorted(elfs)
-    print(elfs_sorted)
+        sum_cal = sum(int(x) for x in elf_split if x)
+        elf_cal.append(sum_cal)
+    elfs_sorted = sorted(elf_cal, reverse=True)
+    return elfs_sorted
+
+
+def get_sum(elfs_sorted, count, isTest=False):
+    sum_first_count = sum(elfs_sorted[:count])
+    print(
+        f'{"TEST-DATA " if isTest else "" }First {count} elf calories sum: {sum_first_count}'
+    )
 
 
 def part_one(file):
@@ -51,16 +57,20 @@ def part_two(file):
 
 
 def main():
-    test_input_path = "test_inp.txt"
-    test_input = open(test_input_path, "r")
+    test_input_path = "./Day1/test_inp.txt"
+    real_input_path = "./Day1/input.txt"
 
-    improved(test_input)
+    with open(test_input_path, "r", encoding="utf-8") as file:
+        test_data = improved(file)
 
-    # input_path = "input.txt"
-    # input_file = open(input_path, "r")
-    # part_one(input_file)
-    # input_file = open(input_path, "r")
-    # part_two(input_file)
+    get_sum(test_data, 1, True)
+    get_sum(test_data, 3, True)
+    print()
+    with open(real_input_path, "r", encoding="utf-8") as file:
+        data = improved(file)
+
+    get_sum(data, 1)
+    get_sum(data, 3)
 
 
 if __name__ == "__main__":
