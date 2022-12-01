@@ -1,3 +1,17 @@
+def improved(file):
+    elfs = []
+    lines = file.read()
+    elfs = lines.split("\n\n")
+
+    for elf in elfs:
+        elf_split = elf.split("\n")
+        sum_cal = sum(int(x) for x in elf_split if str(x).isdigit())
+        print(sum_cal)
+        elfs.append(sum_cal)
+    elfs_sorted = sorted(elfs)
+    print(elfs_sorted)
+
+
 def part_one(file):
     highest_sum = 0
     sum = 0
@@ -40,11 +54,13 @@ def main():
     test_input_path = "test_inp.txt"
     test_input = open(test_input_path, "r")
 
-    input_path = "input.txt"
-    input_file = open(input_path, "r")
-    part_one(input_file)
-    input_file = open(input_path, "r")
-    part_two(input_file)
+    improved(test_input)
+
+    # input_path = "input.txt"
+    # input_file = open(input_path, "r")
+    # part_one(input_file)
+    # input_file = open(input_path, "r")
+    # part_two(input_file)
 
 
 if __name__ == "__main__":
