@@ -20,3 +20,4 @@ python /run.py
 
 Completed days:
 - [x] Day 1
+- [x] Day 2
