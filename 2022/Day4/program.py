@@ -4,10 +4,9 @@ def function(lines):
     for sec1, sec2 in pairs:
         s11, s12 = sec1
         s21, s22 = sec2
-        if int(s11) <= int(s21) <= int(s22) <= int(s12) or int(s21) <= int(s11) <= int(
-            s12
-        ) <= int(s22):
-            # print(sec1, sec2)
+        if (int(s11) <= int(s21) and int(s22) <= int(s12)) or (
+            int(s21) <= int(s11) and int(s12) <= int(s22)
+        ):
             count += 1
     print(count)
 
@@ -18,12 +17,7 @@ def function2(lines):
     for sec1, sec2 in pairs:
         s11, s12 = sec1
         s21, s22 = sec2
-        if (
-            int(s11) <= int(s21) <= int(s12)
-            or int(s11) <= int(s22) <= int(s12)
-            or int(s21) <= int(s11) <= int(s22)
-            or int(s21) <= int(s12) <= int(s22)
-        ):
+        if int(s11) <= int(s22) and int(s21) <= int(s12):
             count += 1
 
     print(count)
