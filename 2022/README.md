@@ -26,4 +26,5 @@ Completed days:
 - [x] Day 5
 - [x] Day 6
 - [x] Day 7
+
 I had no time, so I gave up :(
