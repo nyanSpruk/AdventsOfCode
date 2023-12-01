@@ -8,4 +8,4 @@ TODO
 ```
 
 Completed days:
-- [ ] Day 1
+- [x] Day 1
