@@ -8,12 +8,12 @@ import java.util.List;
 public class FileReader {
     public static List<String> readPublic(int day, int part) throws IOException
     {
-        String path = "./src/day" + day + "/data/day" + day + "_" + part + ".txt";
+        String path = "./src/day" + day + "/data/p" + part + ".txt";
         return Files.readAllLines(Path.of(path));
     }
 
     public static List<String> readHidden(int day) throws IOException {
-        String path = "./src/day" + day + "/data/hidden_day" + day + ".txt";
+        String path = "./src/day" + day + "/data/hidden.txt";
         return Files.readAllLines(Path.of(path));
     }
 }
