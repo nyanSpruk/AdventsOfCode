@@ -22,10 +22,10 @@ public class Day1 {
 
             // Part 2
             Part2.solve(publicInput, false);
-            System.out.println("Part 2 day " + day + " public result: " + Part2.getPublicInputSolution());
+//            System.out.println("Part 2 day " + day + " public result: " + Part2.getPublicInputSolution());
 
             Part2.solve(hiddenInput, true);
-            System.out.println("Part 2 day " + day + " hidden result: " + Part2.getHiddenInputSolution());
+//            System.out.println("Part 2 day " + day + " hidden result: " + Part2.getHiddenInputSolution());
 
         } catch (IOException e) {
             e.printStackTrace();
