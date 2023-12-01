@@ -10,25 +10,26 @@ public class Day1 {
         try {
             int day = 1;
 
-            List<String> publicInputPart1 = FileReader.readLines("public", day, 1);
-            List<String> hiddenInputPart1 = FileReader.readLines("hidden", day, 1);
-            List<String> publicInputPart2 = FileReader.readLines("public", day, 2);
-            List<String> hiddenInputPart2 = FileReader.readLines("hidden", day, 2);
-//            // Part 1
-            Part1.solve(publicInputPart1, false);
+            List<String> publicInputPart1 = FileReader.readPublic(day, 1);
+            List<String> publicInputPart2 = FileReader.readPublic(day, 2);
+
+            List<String> hiddenInput = FileReader.readHidden(day);
+            // Part 1
+            Part1.run(publicInputPart1, false);
             System.out.println("Part 1 day " + day + " public result: " + Part1.getPublicInputSolution());
 
-            Part1.solve(hiddenInputPart1, true);
+            Part1.run(hiddenInput, true);
             System.out.println("Part 1 day " + day + " hidden result: " + Part1.getHiddenInputSolution());
 
             // Part 2
             Part2.run(publicInputPart2, false);
             System.out.println("Part 2 day " + day + " public result: " + Part2.getPublicInputSolution());
 
-            Part2.run(hiddenInputPart2, true);
+            Part2.run(hiddenInput, true);
             System.out.println("Part 2 day " + day + " hidden result: " + Part2.getHiddenInputSolution());
 
         } catch (IOException e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
     }

@@ -8,32 +8,17 @@ public class Part1 {
 
     private static int hiddenInputSolution = 0;
 
-    public static void solve(List<String> input, boolean isHidden)
+    public static void run(List<String> input, boolean isHidden)
     {
-        int solution = 0;
-        //SOLVE here
         if (isHidden)
-        {
-            solution = solveHidden(input);
-            setHiddenInputSolution(solution);
-        }
+            setHiddenInputSolution(solve(input));
         else
-        {
-            solution = solvePublic(input);
-            setPublicInputSolution(solution);
-        }
+            setPublicInputSolution(solve(input));
     }
 
-    private static int solveHidden(List<String> input)
+    private static int solve(List<String> input)
     {
-
-        return 0;
-    }
-
-    private static int solvePublic(List<String> input)
-    {
-
-        return 0;
+        return input.size();
     }
 
     public static int getPublicInputSolution() {

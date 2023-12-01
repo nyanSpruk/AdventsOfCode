@@ -1,7 +1,5 @@
 package day1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Part1 {
@@ -10,20 +8,12 @@ public class Part1 {
 
     private static int hiddenInputSolution = 0;
 
-    public static void solve(List<String> input, boolean isHidden)
+    public static void run(List<String> input, boolean isHidden)
     {
-        int solution = 0;
-
         if (isHidden)
-        {
-            solution = solve(input);
-            setHiddenInputSolution(solution);
-        }
+            setHiddenInputSolution(solve(input));
         else
-        {
-            solution = solve(input);
-            setPublicInputSolution(solution);
-        }
+            setPublicInputSolution(solve(input));
     }
 
     private static int solve(List<String> input)
@@ -34,7 +24,6 @@ public class Part1 {
 
             int first = Integer.parseInt(String.valueOf(numbers.charAt(0)));
             int last = Integer.parseInt(String.valueOf(numbers.charAt(numbers.length()-1)));
-
 
             result += 10 * first + last;
 
