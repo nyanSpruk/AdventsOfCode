@@ -35,9 +35,13 @@ public class Part1 {
             List<String> newNum =  new ArrayList<>(Arrays.asList(numbers));
             newNum.removeAll(Arrays.asList("", null));
 
-            int sum = 0;
-            sum = 10 * Integer.parseInt(newNum.get(0)) + Integer.parseInt(newNum.get(newNum.size() -1));
-            result += sum;
+            String firstStr = newNum.get(0);
+            Integer first = Integer.parseInt(String.valueOf(firstStr.charAt(firstStr.length()-1)));
+            String lastStr = newNum.get(newNum.size() -1);
+            Integer last = Integer.parseInt(String.valueOf(lastStr.charAt(lastStr.length()-1)));
+
+
+            result += 10 * first + last;
 
         }
         return result;
