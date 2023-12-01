@@ -16,29 +16,24 @@ public class Part1 {
 
         if (isHidden)
         {
-            solution = solveHidden(input);
+            solution = solve(input);
             setHiddenInputSolution(solution);
         }
         else
         {
-            solution = solvePublic(input);
+            solution = solve(input);
             setPublicInputSolution(solution);
         }
     }
 
-    private static int solveHidden(List<String> input)
+    private static int solve(List<String> input)
     {
-
         int result = 0;
         for (String line : input) {
-            String[] numbers = line.replaceAll("[^0-9]", " ").split("\\s");
-            List<String> newNum =  new ArrayList<>(Arrays.asList(numbers));
-            newNum.removeAll(Arrays.asList("", null));
+            String numbers = line.replaceAll("[^0-9]", "");
 
-            String firstStr = newNum.get(0);
-            Integer first = Integer.parseInt(String.valueOf(firstStr.charAt(firstStr.length()-1)));
-            String lastStr = newNum.get(newNum.size() -1);
-            Integer last = Integer.parseInt(String.valueOf(lastStr.charAt(lastStr.length()-1)));
+            int first = Integer.parseInt(String.valueOf(numbers.charAt(0)));
+            int last = Integer.parseInt(String.valueOf(numbers.charAt(numbers.length()-1)));
 
 
             result += 10 * first + last;
@@ -46,22 +41,6 @@ public class Part1 {
         }
         return result;
 
-    }
-
-    private static int solvePublic(List<String> input)
-    {
-        int result = 0;
-        for (String line : input) {
-            String[] numbers = line.replaceAll("[^0-9]", " ").split("\\s");
-            List<String> newNum =  new ArrayList<>(Arrays.asList(numbers));
-            newNum.removeAll(Arrays.asList("", null));
-
-            int sum = 0;
-            sum = 10 * Integer.parseInt(newNum.get(0)) + Integer.parseInt(newNum.get(newNum.size() -1));
-            result += sum;
-
-        }
-        return result;
     }
 
     public static int getPublicInputSolution() {

@@ -10,8 +10,8 @@ public class DayTemplate {
         try {
             int day = 0;
 
-            List<String> publicInput = FileReader.readLines("public", day);
-            List<String> hiddenInput = FileReader.readLines("hidden", day);
+            List<String> publicInput = FileReader.readLines("public", day, 0);
+            List<String> hiddenInput = FileReader.readLines("hidden", day, 0);
 
             // Part 1
             Part1.solve(publicInput, false);

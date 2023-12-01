@@ -10,8 +10,8 @@ public class DayTest {
         try {
             int day = 0;
 
-            List<String> publicInput = FileReader.readLines("public", day);
-            List<String> hiddenInput = FileReader.readLines("hidden", day);
+            List<String> publicInput = FileReader.readLines("public", day, 1);
+            List<String> hiddenInput = FileReader.readLines("hidden", day, 1);
 
             // Part 1
             Part1.solve(publicInput, false);
