@@ -1,16 +1,16 @@
-package day_x;
+package day2;
 
 import utils.FileReader;
 
 import java.io.IOException;
 import java.util.List;
 
-public class DayTemplate {
+public class Day2 {
     public static void main(String[] args) {
         try {
-            int day = 0;
+            int day = 2;
 
-            List<String> publicInput = FileReader.readPublic(day, 0);
+            List<String> publicInput = FileReader.readPublic(day, 2);
 
             List<String> hiddenInput = FileReader.readHidden(day);
 
