@@ -1,8 +1,8 @@
-package templates;
+package day_x;
 
 import java.util.List;
 
-public class Part2 {
+public class Part1 {
 
     private static int publicInputSolution = 0;
 

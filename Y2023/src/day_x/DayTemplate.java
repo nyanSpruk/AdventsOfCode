@@ -1,4 +1,4 @@
-package templates;
+package day_x;
 
 import utils.FileReader;
 
