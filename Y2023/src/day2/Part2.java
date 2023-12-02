@@ -16,7 +16,39 @@ public class Part2 {
     }
 
     private static int solve(List<String> input) {
-        return input.size();
+        int sum = 0;
+
+        for (String line : input) {
+            int bigestBlue = 0;
+            int biggestRed = 0;
+            int biggestGreen = 0;
+
+            // Split by :
+            String[] split = line.split(":");
+
+            String[] stringSets = split[1].split("[;,]");
+            for (String set : stringSets) {
+                set = set.substring(1);
+                String color = set.split(" ")[1];
+                int number = Integer.parseInt(set.split(" ")[0]);
+                switch (color) {
+                    case "blue":
+                        if (number > bigestBlue) bigestBlue = number;
+                        break;
+                    case "red":
+                        if (number > biggestRed) biggestRed = number;
+                        break;
+                    case "green":
+                        if (number > biggestGreen) biggestGreen = number;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            sum += biggestGreen * biggestRed * bigestBlue;
+        }
+
+        return sum;
     }
 
     public static int getPublicInputSolution() {

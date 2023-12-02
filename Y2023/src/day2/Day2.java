@@ -10,19 +10,20 @@ public class Day2 {
         try {
             int day = 2;
 
-            List<String> publicInput = FileReader.readPublic(day, 2);
+            List<String> publicInput1 = FileReader.readPublic(day, 1);
+            List<String> publicInput2 = FileReader.readPublic(day, 2);
 
             List<String> hiddenInput = FileReader.readHidden(day);
 
             // Part 1
-            Part1.run(publicInput, false);
+            Part1.run(publicInput1, false);
             System.out.println("Part 1 day " + day + " public result: " + Part1.getPublicInputSolution());
 
             Part1.run(hiddenInput, true);
             System.out.println("Part 1 day " + day + " hidden result: " + Part1.getHiddenInputSolution());
 
             // Part 2
-            Part2.run(publicInput, false);
+            Part2.run(publicInput2, false);
             System.out.println("Part 2 day " + day + " public result: " + Part2.getPublicInputSolution());
 
             Part2.run(hiddenInput, true);

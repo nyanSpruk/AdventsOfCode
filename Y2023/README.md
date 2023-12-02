@@ -9,3 +9,4 @@ TODO
 
 Completed days:
 - [x] Day 1
+- [x] Day 2
