@@ -1,8 +1,6 @@
 package day1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -20,23 +18,14 @@ public class Part2 {
 
     public static void run(List<String> input, boolean isHidden)
     {
-        int solution = 0;
-        //SOLVE here
         if (isHidden)
-        {
-            solution = solve(input);
-            setHiddenInputSolution(solution);
-        }
+            setHiddenInputSolution(solve(input));
         else
-        {
-            solution = solve(input);
-            setPublicInputSolution(solution);
-        }
+            setPublicInputSolution(solve(input));
     }
 
     private static int solve(List<String> input)
     {
-
         int result = 0;
         for (String line : input)
         {
@@ -45,19 +34,15 @@ public class Part2 {
             {
                 char c = line.charAt(i);
                 if ( '1' <= c && c <= '9')
-                {
                     nums.add(c - '0');
-                }
                 else
                 {
                     String subS = line.substring(i);
                     Pattern pattern = Pattern.compile("(one|two|three|four|five|six|seven|eight|nine)", Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(subS);
 
-                    // Find the first match and convert it to an integer
                     if (matcher.find()) {
                         String match = matcher.group();
-                        // Check the start index of the match
                         int index = subS.indexOf(match);
                         if (match.charAt(0) == subS.charAt(0) && index ==0)
                         {
@@ -65,9 +50,7 @@ public class Part2 {
                         }
                     }
                 }
-
             }
-
             result += nums.get(0) * 10 + nums.get(nums.size()-1);
         }
         return result;
