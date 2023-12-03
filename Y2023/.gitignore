@@ -27,3 +27,8 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### input files ###
+p1.txt
+p2.txt
+hidden.txt
