@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Part2 {
 
-    private static double publicInputSolution = 0;
+    private static long publicInputSolution = 0;
 
-    private static double hiddenInputSolution = 0;
+    private static long hiddenInputSolution = 0;
 
     public static void run(List<String> input, boolean isHidden) {
         if (isHidden)
@@ -15,7 +15,7 @@ public class Part2 {
             setPublicInputSolution(solve(input));
     }
 
-    private static double solve(List<String> input) {
+    private static long solve(List<String> input) {
         int sum = 0;
         HashMap<Integer, Integer> numMap = new HashMap<>();
         HashMap<Integer, Integer> toDo = new HashMap<>();
@@ -56,19 +56,19 @@ public class Part2 {
         return sum;
     }
 
-    public static double getPublicInputSolution() {
+    public static long getPublicInputSolution() {
         return publicInputSolution;
     }
 
-    public static void setPublicInputSolution(double val) {
+    public static void setPublicInputSolution(long val) {
         publicInputSolution = val;
     }
 
-    public static double getHiddenInputSolution() {
+    public static long getHiddenInputSolution() {
         return hiddenInputSolution;
     }
 
-    public static void setHiddenInputSolution(double val) {
+    public static void setHiddenInputSolution(long val) {
         hiddenInputSolution = val;
     }
 

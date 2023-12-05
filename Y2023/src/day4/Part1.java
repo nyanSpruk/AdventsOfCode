@@ -7,9 +7,9 @@ import java.util.Set;
 
 public class Part1 {
 
-    private static double publicInputSolution = 0;
+    private static long publicInputSolution = 0;
 
-    private static double hiddenInputSolution = 0;
+    private static long hiddenInputSolution = 0;
 
     public static void run(List<String> input, boolean isHidden) {
         if (isHidden)
@@ -18,8 +18,8 @@ public class Part1 {
             setPublicInputSolution(solve(input));
     }
 
-    private static double solve(List<String> input) {
-        double sum = 0;
+    private static long solve(List<String> input) {
+        long sum = 0;
         for (String line : input) {
             Set<Integer> winningSet = new HashSet<>();
             Set<Integer> gottenSet = new HashSet<>();
@@ -46,19 +46,19 @@ public class Part1 {
         return sum;
     }
 
-    public static double getPublicInputSolution() {
+    public static long getPublicInputSolution() {
         return publicInputSolution;
     }
 
-    public static void setPublicInputSolution(double val) {
+    public static void setPublicInputSolution(long val) {
         publicInputSolution = val;
     }
 
-    public static double getHiddenInputSolution() {
+    public static long getHiddenInputSolution() {
         return hiddenInputSolution;
     }
 
-    public static void setHiddenInputSolution(double val) {
+    public static void setHiddenInputSolution(long val) {
         hiddenInputSolution = val;
     }
 
