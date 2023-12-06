@@ -11,9 +11,43 @@ public class Part1 {
 
     public static void run(List<String> input, boolean isHidden) {
         if (isHidden)
-            setHiddenInputSolution(solve(input));
+            setHiddenInputSolution(solveQuadratic(input));
         else
-            setPublicInputSolution(solve(input));
+            setPublicInputSolution(solveQuadratic(input));
+    }
+
+    private static int solveQuadratic(List<String> input) {
+        List<Integer> times = Arrays.stream(input.get(0).split(":"))
+                .skip(1)
+                .flatMap(s -> Arrays.stream(s.split("\\s+")))
+                .filter(s -> !s.trim().isEmpty())
+                .map(Integer::parseInt)
+                .toList();
+
+        List<Integer> distances = Arrays.stream(input.get(1).split(":"))
+                .skip(1)
+                .flatMap(s -> Arrays.stream(s.split("\\s+")))
+                .filter(s -> !s.trim().isEmpty())
+                .map(Integer::parseInt)
+                .toList();
+
+        int res = 1;
+
+        for (int i = 0; i < times.size(); i++) {
+            int dist = distances.get(i);
+            int num = times.get(i);
+            // Go from number half until one reachers 0
+
+            double sqrt = Math.sqrt(num * num - 4 * dist);
+            double min = (num - sqrt) / 2.0;
+            double max = (num + sqrt) / 2.0;
+
+            int minHoldTime = (int) Math.floor(min + 1.0);
+            int maxHoldTime = (int) Math.ceil(max - 1.0);
+            res *= maxHoldTime - minHoldTime + 1;
+        }
+
+        return res;
     }
 
     private static int solve(List<String> input) {
@@ -43,7 +77,6 @@ public class Part1 {
             int y = num / 2 + num % 2;
 
             while (x * y > dist) {
-//                System.out.println("X " + x + " Y " + y + "m: " + (x*y) + " dist " + dist);
                 counter++;
                 x--;
                 y++;
@@ -51,11 +84,9 @@ public class Part1 {
 
             int tempRes = counter * 2;
 
-            if (num % 2 == 0) {
+            if (num % 2 == 0)
                 tempRes--;
-            }
 
-//            System.out.println("COUNT " + tempRes);
             res *= tempRes;
         }
 
