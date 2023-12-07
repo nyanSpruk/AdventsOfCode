@@ -16,10 +16,10 @@ public class Day7 {
             List<String> hiddenInput = FileReader.readHidden(day);
 
             // Part 1
-//            Part1.run(publicInput1, false);
+            Part1.run(publicInput1, false);
             System.out.println("Part 1 day " + day + " public result: " + Part1.getPublicInputSolution());
 
-//            Part1.run(hiddenInput, true);
+            Part1.run(hiddenInput, true);
             System.out.println("Part 1 day " + day + " hidden result: " + Part1.getHiddenInputSolution());
 
             // Part 2
