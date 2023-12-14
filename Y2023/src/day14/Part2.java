@@ -27,6 +27,7 @@ public class Part2 {
             }
             String key = String.join("", input); // Easiest way to use the key
             // map is to store already seen map. and to see when the cycle starts to repeat
+            // Idea is similar to mod operator to get rid of the repeating cycles, we just add so many to j
             if (map.containsKey(key)) {
                 long cycleSize = j - map.get(key);
                 long numberOfCycles = (meja - j) / cycleSize;
