@@ -1,5 +1,6 @@
 package day15;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Part1 {
@@ -16,7 +17,22 @@ public class Part1 {
     }
 
     private static int solve(List<String> input) {
-        return input.size();
+        String h = input.get(0).trim();
+        List<String> parts = Arrays.stream(h.split(",")).toList();
+        int res = 0;
+        for (String part : parts)
+        {
+            int temp = 0;
+            for (char c : part.toCharArray())
+            {
+                temp += c;
+                temp *= 17;
+                temp %= 256;
+            }
+            res += temp;
+        }
+
+        return res;
     }
 
     public static int getPublicInputSolution() {
