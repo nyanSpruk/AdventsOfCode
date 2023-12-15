@@ -22,3 +22,4 @@ Completed days:
 - [x] Day 12 (Part 1 Only)
 - [x] Day 13
 - [x] Day 14
+- [x] Day 15
