@@ -1,70 +1,71 @@
 package day12;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
-public class Part1 {
+public class Part1
+{
 
     private static int publicInputSolution = 0;
 
     private static int hiddenInputSolution = 0;
 
-    public static void run(List<String> input, boolean isHidden) {
+    public static void run(List<String> input, boolean isHidden)
+    {
         if (isHidden)
             setHiddenInputSolution(solve(input));
         else
             setPublicInputSolution(solve(input));
     }
 
-    private static boolean isArrValid(String springs, List<Integer> sizes) {
-        int springSize = 0;
-        List<Integer> blocks = new ArrayList<>();
-//        if(springs.equals(".###.##.#.##"))
-//            System.out.println("h");
-        for (char c : springs.toCharArray()) {
-            if (c == '#')
-                springSize++;
-            else if (c == '.') {
-                if (springSize > 0)
-                    blocks.add(springSize);
-                springSize = 0;
+    private static boolean isBigEnough(String str, int size)
+    {
+        for (int i = 0; i < size; i++)
+            if (str.charAt(i) != '?' && str.charAt(i) != '#')
+                return false;
+        return true;
+    }
+
+    private static int rek(String springs, List<Integer> sizes, int ix)
+    {
+        if (sizes.isEmpty() && springs.isEmpty())
+            return 1;
+
+        if (!sizes.isEmpty() && springs.length() < sizes.get(0))
+            return 0;
+        int sum = 0;
+        // Check if current # ? combo is at least of size same as the condition
+        if (!sizes.isEmpty())
+        {
+            if (isBigEnough(springs.substring(0, sizes.get(0)), sizes.get(0)))
+            {
+                if (springs.length() == sizes.get(0))
+                {
+                    int size = sizes.get(0);
+                    List<Integer> newSizes = sizes.subList(1, sizes.size());
+                    sum += rek(springs.substring(size), newSizes, ix);
+                }
+                else if (springs.charAt(sizes.get(0)) != '#')
+                {
+                    int size = sizes.get(0);
+                    List<Integer> newSizes = sizes.subList(1, sizes.size());
+                    sum += rek(springs.substring(size + 1), newSizes, ix);
+                }
             }
+
         }
 
-        if (springSize > 0)
-            blocks.add(springSize);
+        if (springs.charAt(0) != '#')
+            sum += rek(springs.substring(1), sizes, ix);
 
-        if (sizes.size() != blocks.size())
-            return false;
-
-        boolean isValid = IntStream.range(0, Math.min(sizes.size(), blocks.size()))
-                .mapToObj(i -> sizes.get(i).equals(blocks.get(i)))
-                .allMatch(Boolean::booleanValue);
-
-//        if(isValid)
-//            System.out.println(springs);
-
-        return isValid;
+        return sum;
     }
 
-    private static int rek(String springs, List<Integer> sizes, int ix) {
-        if (ix == springs.length())
-            return isArrValid(springs, sizes) ? 1 : 0;
-
-        // Replace ? with possible answers
-        if (springs.charAt(ix) == '?') {
-            int opt1 = rek(springs.substring(0, ix) + "#" + springs.substring(ix + 1), sizes, ix + 1);
-            int opt2 = rek(springs.substring(0, ix) + "." + springs.substring(ix + 1), sizes, ix + 1);
-            return opt1 + opt2;
-        } else
-            return rek(springs, sizes, ix + 1);
-    }
-
-    private static int solve(List<String> input) {
+    private static int solve(List<String> input)
+    {
         int res = 0;
-        for (String line : input) {
+        for (String line : input)
+        {
             String springs = line.split(" ")[0];
             List<Integer> sizes = Arrays.stream(line.split(" ")[1]
                             .split(","))
@@ -79,19 +80,23 @@ public class Part1 {
         return res;
     }
 
-    public static int getPublicInputSolution() {
+    public static int getPublicInputSolution()
+    {
         return publicInputSolution;
     }
 
-    public static void setPublicInputSolution(int val) {
+    public static void setPublicInputSolution(int val)
+    {
         publicInputSolution = val;
     }
 
-    public static int getHiddenInputSolution() {
+    public static int getHiddenInputSolution()
+    {
         return hiddenInputSolution;
     }
 
-    public static void setHiddenInputSolution(int val) {
+    public static void setHiddenInputSolution(int val)
+    {
         hiddenInputSolution = val;
     }
 
