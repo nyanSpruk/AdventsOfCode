@@ -1,12 +1,11 @@
 package day16;
 
+import utils.FileReader;
+
 import java.io.IOException;
 import java.util.List;
 
-import utils.FileReader;
-
-public class Day16
-{
+public class Day16 {
     public static void main(String[] args) {
         try {
             int day = 16;
