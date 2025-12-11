@@ -1,5 +1,6 @@
 import * as fs from "fs";
-
+import { solve, equalTo } from "yalps";
+import type { Model, Constraint } from "yalps";
 const day = 10;
 
 const testData: string = `./data/day${day}/testData.txt`;
@@ -52,10 +53,59 @@ const part1 = (lines: string[]): number => {
 
 const part2 = (lines: string[]): number => {
     let sum = 0;
-    // No idea, later
+
+    for (let line of lines) {
+        const parts = line.split(" ");
+
+        const targetStr = parts[parts.length - 1].replace("{", "").replace("}", "");
+        const targets = targetStr.split(",").map(Number);
+        const numCounters = targets.length;
+
+        const buttons: number[][] = [];
+        for (let i = 1; i < parts.length - 1; i++) {
+            const indexes = parts[i].replace("(", "").replace(")", "").split(",").map(Number);
+            buttons.push(indexes);
+        }
+
+        const constraints: Record<string, Constraint> = {};
+        const variables: Record<string, Record<string, number>> = {};
+
+        // Target constraints
+        for (let counter = 0; counter < numCounters; counter++) {
+            constraints[`counter${counter}`] = equalTo(targets[counter]);
+        }
+
+        for (let button = 0; button < buttons.length; button++) {
+            const coeffs: Record<string, number> = {
+                objective: 1,
+            };
+
+            // Which counter which button
+            for (const counter of buttons[button]) {
+                coeffs[`counter${counter}`] = 1;
+            }
+
+            variables[`button${button}`] = coeffs;
+        }
+
+        const model: Model = {
+            direction: "minimize",
+            objective: "objective",
+            constraints: constraints,
+            variables: variables,
+            integers: true,
+        };
+
+        const solution = solve(model);
+
+        if (solution.status === "optimal") {
+            sum += solution.result;
+        }
+    }
 
     return sum;
 };
+
 
 console.log("Test Data Part 1: ", part1(testDataPairs));
 console.log("Real Data Part 1: ", part1(realDataPairs));
